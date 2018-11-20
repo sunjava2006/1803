@@ -1,7 +1,24 @@
 // pages/types/types.js
 Page({
-
+    //  从数据聚合中取出新闻
+    getNewsList:function(kind){
+       var that = this;
+       wx.request({
+           url: 'http://v.juhe.cn/toutiao/index',
+           data:{
+               key:"082153265794dc7a4bdb119e272319ee",
+               type:kind
+           },
+           success:function(res){
+               console.log(res)
+               that.setData({
+                   newsList:res.data.result.data
+               });
+           }
+       });
+    },
     selectType:function(e){
+        this.getNewsList(e.target.id);
         this.setData({
             currentType: e.target.id
         });
@@ -11,7 +28,8 @@ Page({
      * 页面的初始数据
      */
     data: {
-        currentType:'top'
+        currentType:'top',
+        newsList:[]
     },
 
     /**
@@ -32,7 +50,7 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-
+        this.getNewsList("top");
     },
 
     /**

@@ -36,3 +36,36 @@
 .selected{
     font-weight: bold;
 }
+.news-item{
+    margin-left: 10rpx;
+    margin-right: 10rpx;
+}
+.scroll-newslist{
+    height: 92vh;
+
+}
+.title{
+    line-height: 40px;
+    font-weight: bold;
+}
+.imglist{
+    display: flex;
+    flex-direction: row;
+}
+.imglist image{
+    width: 233rpx;
+    margin: 6rpx;
+    height: 150rpx;
+}
+.info{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: #ccc;
+}
+.hr{
+    width: 100vw;
+    height: 1px;
+    background: rgb(240, 168, 168);
+   
+}

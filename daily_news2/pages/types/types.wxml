@@ -15,3 +15,24 @@
     </scroll-view>
     <view class='plus'>+</view>
 </view>
+<scroll-view scroll-y="true" class='scroll-newslist'>
+    <view>
+       <block wx:for="{{newsList}}" wx:key="uniquekey">
+            <!-- -----------------------------------------------------   -->
+            <view class="news-item">
+                <view class='title'>{{item.title}}</view>
+                <view class='imglist'>
+                    <view><image src="{{item.thumbnail_pic_s}}"/></view>
+                    <view><image src="{{item.thumbnail_pic_s02}}"/></view>
+                    <view><image src="{{item.thumbnail_pic_s03}}"/></view>
+                </view>
+                <view class='info'>
+                    <view class='author'>{{item.author_name}}</view>
+                    <view class='date'>{{item.date}}</view>
+                </view>
+                <view class='hr'></view>
+            </view>
+            <!-- -----------------------------------------------------   -->
+        </block>
+    </view>
+</scroll-view>
