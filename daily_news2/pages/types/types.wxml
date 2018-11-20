@@ -1,0 +1,17 @@
+<view class='nav-bar'>
+    <scroll-view class='scroll-bar' scroll-x='true'>
+        <view class='type-list'>
+             <view><text class="{{currentType=='top'?'selected':'normal'}}" id="top" bindtap='selectType'>头条</text></view>
+             <view><text class="{{currentType=='shehui'?'selected':'normal'}}" id="shehui" bindtap='selectType'>社会</text></view>
+             <view><text class="{{currentType=='guonei'?'selected':'normal'}}" id="guonei" bindtap='selectType'>国内</text></view>
+             <view><text class="{{currentType=='guoji'?'selected':'normal'}}" id="guoji" bindtap='selectType'>国际</text></view>
+             <view><text class="{{currentType=='yule'?'selected':'normal'}}" id="yule" bindtap='selectType'>娱乐</text></view>
+             <view><text class="{{currentType=='tiyu'?'selected':'normal'}}" id="tiyu" bindtap='selectType'>体育</text></view>
+             <view><text class="{{currentType=='junshi'?'selected':'normal'}}" id="junshi" bindtap='selectType'>军事</text></view>
+             <view><text class="{{currentType=='keji'?'selected':'normal'}}" id="keji" bindtap='selectType'>科技</text></view>
+             <view><text class="{{currentType=='caijing'?'selected':'normal'}}" id="caijing" bindtap='selectType'>财经</text></view>
+             <view><text class="{{currentType=='shishang'?'selected':'normal'}}" id="shishang" bindtap='selectType'>时尚</text></view>
+        </view>
+    </scroll-view>
+    <view class='plus'>+</view>
+</view>

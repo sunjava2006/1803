@@ -1,0 +1,26 @@
+{
+  "pages":[
+   "pages/types/types",
+   "pages/detail/detail",
+   "pages/wifi/wifi"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#f00",
+    "navigationBarTitleText": "每日新闻",
+    "navigationBarTextStyle":"white"
+  },
+  "tabBar":{
+      "backgroundColor":"#000",
+      "color":"#fff",
+      "selectedColor":"#F00",
+      "list":[{"pagePath":"pages/types/types",
+               "text":"新闻",
+               "iconPath":"/imgs/news-g.png",
+               "selectedIconPath":"/imgs/news-r.png"},
+              {"pagePath": "pages/wifi/wifi",
+                "text": "免费Wifi",
+                "iconPath":"/imgs/wifi-g.png",
+                "selectedIconPath":"/imgs/wifi-r.png"}]
+  }
+}

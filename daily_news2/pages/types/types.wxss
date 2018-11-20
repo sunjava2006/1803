@@ -1,0 +1,38 @@
+.nav-bar{
+    width: 100vw;
+    height: 8vh;
+    background: pink;
+    display: flex;
+    flex-direction: row;
+}
+.scroll-bar{
+    width: 80%;
+    height: 8vh;
+}
+.plus{
+    width: 20%;
+    line-height: 8vh;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    background: yellow;
+}
+.type-list{
+    display: flex;
+    flex-direction: row;
+}
+.type-list view{
+    margin-left: 10px;
+}
+.type-list  text{
+    display: inline-block;
+    width: 40px;
+    height: 8vh;
+    line-height: 8vh;
+}
+.normal,.selected{
+    font-size: 16px;
+}
+.selected{
+    font-weight: bold;
+}
