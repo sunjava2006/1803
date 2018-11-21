@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	    *{
+	    	margin: 0;
+	    }
+		html, body{
+			height: 100%;
+		}
+		#page{
+			height: 100%;
+			background: gray;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+		}
+		#header,#footer{
+			height: 100px;
+			background: black;
+			border: white solid 2px;
+			color:white;
+		}
+		#body{
+			background: white;
+			height: 100%;
+			overflow: scroll;
+		}
+	</style>
+</head>
+<body>
+	<div id="page">
+		<div id="header">Header</div>
+		<div id="body">Hello<br></div>
+		<div id="footer">Footer</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>我的第一个Flex页面</title>
+		<style>
+		    html,body{
+				height: 100%;
+				width: 100%;
+				display: flex;
+				flex-direction: row;
+				justify-content: space-around;
+				align-items: stretch;
+
+		    }
+			div{
+				/*width: 100px;*/
+				/*height: 100px;*/
+			}
+			#div1{
+				/*width: 100px;*/
+				flex-grow: 1;
+				background: red;
+				/*height: 100px;*/
+			}
+			#div2{
+				flex-grow: 2;
+				background: blue;
+				/*height: 200px;*/
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div id="div1"></div>
+		<div id="div2"></div>
+		
+	</body>
+</html> 

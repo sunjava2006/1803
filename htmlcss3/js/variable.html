@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		var MY_NAME = "WANG";
+
+		function foo () { // 对于javascript语言，局部变量是函数级别的。
+			var a = 80;
+			console.log(a);
+
+			if(80 == a){
+				var b = 100;
+				console.log("1:"+ (a + b));
+			}
+
+			console.log("2:"+ (a + b));
+		}
+
+		foo();
+
+
+
+
+	</script>
+</body>
+</html>
