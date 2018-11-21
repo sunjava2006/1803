@@ -75,6 +75,16 @@
 
     // 6)"java is a primary programming language. ",有多少个'a'字符？
 
+    s = "java is a primary programming language.";
+    for(var count=0,at=0; true ; count++, at++){   //  init; condition; post
+    	at = s.indexOf('a', at)
+    	if(-1 == at){
+    		break;
+    	}
+    }
+
+    console.log("a have "+count +" .")
+
 
 	</script>
 </body>
