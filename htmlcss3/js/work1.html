@@ -7,21 +7,103 @@
 <body>
 	<script>
 		// 1)“java is primary program language. javascript is good script language.”。要求，将每句中首字符为大写。
+		function a1 () {
+			var s = "java is primary program language.javascript is good script language."
+			//var array = s.split('.');
+			var array = s.match(/([\w\s]+\.)/g);
+
+			console.log("length: " + array.length);
+			for(var i=0; i<array.length; i++){
+				var element = array[i]; // 根据下标，取出数组中的元素。
+				element = element.trim();
+				if('' != element){
+					var first = element.charAt(0).toUpperCase();// 取首字符，并转换为大写。
+					var newStr = first + element.substring(1) ;
+					console.log(newStr);
+				}
+			}
+		}
+		// a1();
+
 
 
 		// 2)将“java is primary program language. javascript is good script language.”中内容按单词，从后往前，逐个输出。
+		function b () {
+			var s = "java is primary program language. javascript is good script language.";
+			var array = s.match(/\b\w+\b/g);
+			console.log(array);
+			for(var i=array.length-1; i>=0; i--){
+				console.log(array[i]);
+			}
+		}
+		//b();
 
+		// 3)“在中国的邪教中，有一种叫不二功的大法。”。将“不二功”，这个敏感词替换为“XXX”。
 
-		// 3)“在中国的邪教中，有一种叫不二功的大法”。将“不二功”，这个敏感词替换为“XXX”。
+        function c () {
+        	s = "在中国的邪教中，有一种叫不二功的大法。在中国的邪教中，有一种叫不二功的大法。";
+
+        	s = s.replace(/不二功/g, "***");
+
+        	console.log(s);
+        }
+        //c();
+
 
 		
 		// 4）for循环写的计算“java is primary program language. javascript is good script language.”中有多少个'a'。更改为用while实现。
 
+		function d () {
+			var s = "java is primary program language. javascript is good script language.";
+
+			// var count =0;
+			// var at = 0;
+
+			for(var count=0, at=0; true; at++, count++){
+				 at = s.indexOf("a", at);
+				 if(-1 == at){
+				 	break;
+				 }
+				 
+				 // at++;
+				 // count++;
+			}
+			console.log(count);
+		}
+
+		//d();
 
 		// 5) 将字符串“abcjkl”中的字符变为"albkcj".
+		function e () {
+			var s = "123456";
+			var newStr = '';
+			if(s.length%2 == 0){
+				for(var i=0; i<s.length/2; i++){
+					var f = s.charAt(i);
+					var b = s.charAt(s.length-1-i);
+					newStr = newStr+(f+b);   // a+=b    a=a+b
+				}
+			}
+			return newStr;
+		}
 
+		//console.log(e());
 
 		// 6) 计算“java is primary program language. javascript is good script language”中，最长的单词是哪个，有多长？
+		function f(){
+			var s = "java is primary program language. javascript is good script language";
+			var array = s.match(/\b\w+\b/g);
+			var maxLen = 0;
+			var maxStr = "";
+			for(var i in array){
+				if(array[i].length>maxLen){
+					maxLen = array[i].length;
+					maxStr = array[i];
+				}
+			}
+			return maxLen+"-"+maxStr;
+		}
+		console.log(f());
 
 		// 7) 将"china is my country"中第一个单词，变为全部大写的。 
 
