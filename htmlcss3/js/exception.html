@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		
+		var o = {name:"wang"};
+		var array = [o];
+
+		try{
+			var name = array[1].name;
+		    document.writeln(name);
+		}catch(ex){
+			document.writeln("发生错误。"+ex);
+		}finally{
+			document.write('<hr>end');
+		}
+		
+
+
+	</script>
+</body>
+</html>

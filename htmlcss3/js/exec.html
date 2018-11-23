@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		function NoParamException (argument) {
+			this.msg = argument;
+			this.toString=function () {
+				return this.msg;
+			}
+		}
+
+		function add (a, b) {
+			if(a && b){
+				return a+b;
+			}else{
+				throw new NoParamException('没有相加的参数');
+			}
+		}
+
+
+       try{
+       	   document.writeln(add());
+       }catch (ex){
+       	   alert(ex);
+       }
+		
+
+	</script>
+</body>
+</html>

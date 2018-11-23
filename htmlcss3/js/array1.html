@@ -1,0 +1,27 @@
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			a = [8];//new Array(8);
+			document.writeln(a.length +"<br>");
+			a[2] = 100;
+			a[3] = 200;
+			a[5] = 600;
+			document.writeln(a.length+"<br>");
+			// for(var i=0; i<a.length; i++){
+			// 	document.writeln(i + ":" + a[i] + "<br>");
+			// }
+
+			for(var i in a){  // for each 
+				document.writeln(i + ":" + a[i] + "<br>");
+			}
+
+			for(var i of a){
+				document.writeln("value:" + i + "<hr>");
+			}
+		</script>
+	</body>
+</html>

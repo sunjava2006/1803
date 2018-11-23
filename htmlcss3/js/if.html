@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		
+		var score = Math.round(Math.random()*100);
+
+		var grad = "";
+
+		if(score>=90){
+			grad = "优";
+		}else{
+			if(score>=80){
+				grad = "良";
+			}
+			else{
+				if(score>=70){
+					grad = "中";
+				}
+				else{
+					if(score>=60){
+						grad="一般";
+					}else{
+						grad="差";
+					}
+				}
+			}
+		}
+
+		console.log(score +":"+ grad);
+
+		if(score>=90){
+			grad="y";
+		}
+		else if(score >= 80){
+			grad = "l";
+		}
+		else if(score >= 70){
+			grad = "z";
+		}
+		else if(score >= 60){
+			grad="jg";
+		}
+		else{
+			grad = 'c';
+		}
+		console.log(score +":"+ grad);
+			
+
+
+	</script>
+</body>
+</html>

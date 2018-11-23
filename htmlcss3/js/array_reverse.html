@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		// 将数组中元素反转
+		array = [];
+		for(var i=0;i<10;i++){
+			array.push(i);
+		}
+		document.writeln(array + "<hr>")
+
+
+		for(var i=0; i<array.length/2; i++){
+			var temp = array[i];
+			array[i] = array[array.length-1-i];
+			array[array.length-1-i]  = temp;
+		}
+		document.writeln(array + "<hr>")
+
+
+	</script>
+</body>
+</html>
