@@ -3,19 +3,29 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
+	<style>
+		
+			td{
+				width: 20px;
+				height: 20px;
+				border: black solid 1px;
+            }
+            .red{
+            	background: red;
+            }
+	</style>
 </head>
 <body>
 	<script>
-		s = "achina";
-		var at = 0;
-		do{
-			at = s.indexOf("a", at);
-			console.log(at);
-			if(-1 == at){
-				break;
-			}
-			at++;
-		}while(true);
+		document.writeln('<table>');
+		   for(var i=0; i<10; i++){
+		   	   document.writeln('<tr>');
+		   	   for(var j=0; j<10; j++){
+		   	   	    document.writeln('<td class="red"></td>')
+		   	   }
+		   	   document.writeln('</tr>');
+		   }
+		document.writeln('</table>');
 	</script>
 </body>
 </html>
