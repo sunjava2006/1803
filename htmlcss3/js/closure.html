@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		function f (a) {
+			var data={"name":"javascript", "price":35};
+			a(data);
+
+			return data;
+		}
+
+		var value = f(function(){
+			var d = arguments[0];
+			if(d.price<100){
+				d.sale="ok";
+			}else{
+				d.sale="no";
+			}
+			//return d;
+		});
+
+		console.log(value);
+
+
+	</script>
+</body>
+</html>

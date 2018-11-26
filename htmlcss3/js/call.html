@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		
+		function initObj (id, type, name) {
+			this.id = id;
+			this.type = type;
+			this.name = name;
+		}
+
+		var o = {};
+		initObj.call(o, 1, 'lang', 'java');
+
+		var o2 = new Object();
+		initObj.apply(o2, [2, 'db', 'mysql']);
+
+		
+
+
+	</script>
+</body>
+</html>

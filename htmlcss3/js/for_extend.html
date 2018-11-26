@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		function a () {
+			console.log('a');
+			i = 0;
+		}
+
+		function b () {
+			console.log('b');
+			return i<3? true: false;
+		}
+
+		function c () {
+			console.log('c');
+			i++;
+		}
+
+		for(a(); b(); c()){
+			console.log('d');
+			if(0 == i%2){
+				continue;
+			}
+			
+		}
+
+		// abdc   bdc   bdc b
+	</script>
+</body>
+</html>

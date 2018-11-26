@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		function a () {
+			var array=[10,20,30,40];
+			var b = [];
+			for(var i=0; i<array.length; i++){
+				b.push(
+					(function (j) {
+					return array[j];
+					
+				})(i)
+				);
+			}// for
+			return b;
+		}// function a
+
+		var barray = a();
+		for(var i=0; i<barray.length; i++){
+			var f = barray[i];
+			console.log(f);
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="my.js"></script>
+</head>
+<body>
+	<script>
+		// (function () {
+			
+		// 	//var myName = "wang";
+
+		// 	function f () {
+		// 		console.log(this);
+		// 		alert(myName);
+		// 	}
+
+		// 	function a (argument) {
+		// 		myName = "xxxx";
+		// 	}
+
+		// 	f();
+		// 	a();
+		// 	f();
+
+		// })();
+
+		// checkName();
+        function names () {
+        	return this.name;
+        }
+
+		var o = {name:"wang"};
+
+		var o2 = {name:"Xie"};
+		
+		console.log(names.name);
+
+
+		var name = names.call(o)
+		console.log(name);
+
+		name2 = names.apply(o2);
+		console.log(name2);
+
+
+	</script>
+</body>
+</html>
