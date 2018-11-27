@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<span id="clock">YYYY-mm-dd HH:mm:ss</span>
+	<script>
+
+		setTimeout(function(){
+			var day=['日', '一', '二', '三', '四', '五', '六'];
+			var now = new Date();
+			//var s = now.toLocaleString();
+			var s = now.getFullYear()+"-"+(now.getMonth()+1)+"-"+now.getDate()+"&nbsp;"+now.getHours()+":"+now.getMinutes()+":"+now.getSeconds() +"星期"+day[now.getDay()];
+
+			var clockSpan = document.getElementById('clock'); // 根据ID获取元素
+			clockSpan.innerHTML = s; // 修改HTML元素的内容
+
+			// 测试这个方法
+			//console.log(now.getTime());
+
+			setTimeout(arguments.callee, 1000);
+		}, 1000);
+	</script>
+</body>
+</html>

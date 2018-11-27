@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="time" id="time">
+	<audio src="../av/1.mp3" id="audio"></audio>
+	<button onclick="startTimer(document.getElementById('time').value);">计时</button>
+	<script>
+		val = localStorage.startTime;
+		if(val){
+			startTimer(val);
+		}
+		
+
+		function startTimer(val){
+
+			//var val = document.getElementById('time').value;
+			localStorage.startTime=val;
+			sessionStorage.startTime=val;
+			var time = val.split(":");
+
+			var nexttime = new Date();
+			nexttime.setHours(Number(time[0]));
+			nexttime.setMinutes(Number(time[1]));
+			var now = new Date();
+
+			var dvalue = nexttime.getTime()-now.getTime();
+
+			setTimeout(function () {
+				//document.getElementById('audio').play();
+			}, dvalue);
+
+		}
+
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		input{
+			width: 300px;
+		}
+		.error{
+			color: red;
+		}
+	</style>
+</head>
+<body>
+
+    <form action="#" method="get" onsubmit="return regist();">
+    	<table>
+    		<tr>
+    			<td>用户名</td>
+    			<td>
+    				<input type="text" name="userName" id="userName" value="123abc" placeholder="以字母数字组合，3个字符以上，6字符以下。">
+    				<span class="error" id="userNameMsg"></span>
+    			</td>
+    		</tr>
+    		<tr>
+    			<td>密码</td>
+    			<td><input type="text" name="pwd" id="pwd" value="12A345" placeholder=" 字母与数字组合，至少有一个大写字母。6-12位长。">
+    				<span class="error" id="pwdMsg"></span>
+    			</td>
+    		</tr>
+    		<tr>
+    			<td>e-mail</td>
+    			<td><input type="text" name="email" id="email" value="amazon@z.cn">
+					<span class="error" id="emailMsg"></span>
+    			</td>
+    		</tr>
+    		<tr>
+    			<td>手机号码</td>
+    			<td><input type="text" name="mobilephone" id="mobilephone" value="13345678901">
+    				<span class="error" id="mobilephoneMsg"></span>
+    			</td>
+    		</tr>
+    		<tr>
+    			<td>固话号码</td>
+    			<td><input type="text" name="tel" id="tel">
+    				<span class="error" id="telMsg"></span>
+    			</td>
+    		</tr>
+    		<tr>
+    			<td></td>
+    			<td><input type="submit" value="注册" >
+    			</td>
+    		</tr>
+    	</table>
+
+
+    </form>
+
+	<script>
+		function regist () {
+			var flag = true;
+
+			var userNameRege = new RegExp("^[a-zA-Z0-9]{3,6}$");
+			var userName = document.getElementById('userName').value; // 取输入框的值。
+			if (!userNameRege.test(userName)){ // 调用正则表达式对象的test方法，测试与字符串是否匹配。
+				document.getElementById('userNameMsg').innerHTML='用户名格式不正确';
+				//return false;
+				flag = false;
+			}
+
+			var pwdRege = /^[0-9a-zA-Z]{6,12}$/; // ^匹配字符开始位置，$匹配字符结束位置。
+			var mustCap = /[A-Z]/;
+			var pwd = document.getElementById('pwd').value;
+			if(!(pwdRege.test(pwd) && mustCap.test(pwd))){
+				document.getElementById('pwdMsg').innerHTML='密码格式不正确';
+				// return false;
+				flag = false;
+			}
+
+			var emailRege = /^.+@.+\.(com|org|edu|cn)$/;
+			var email = document.getElementById('email').value;
+			if(! emailRege.test(email)){
+				document.getElementById('emailMsg').innerHTML = '邮件地址不正确';
+				// return false;
+				flag = false;
+			}
+
+
+			var mobileRege = /^(133|189|180|130|151|157|138|139)\d{8}$/;
+			var mobilephone = document.getElementById('mobilephone').value;
+			if(! mobileRege.test(mobilephone)){
+				document.getElementById('mobilephoneMsg').innerText = "手机号码不正确";
+				// return false;
+				flag = false;
+			}
+
+			var telRege = /^\d{3,4}(\s|-)?\d{8}$/;
+			var tel = document.getElementById('tel').value;
+			if(! telRege.test(tel)){
+
+				document.getElementById('telMsg').innerHTML="电话号码不正确";
+				// return false;
+				flag = false;
+			}
+
+			return flag;
+		}
+	</script>
+</body>
+</html>
