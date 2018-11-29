@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		
+		var provinces=[{name:'江苏', value:'JiangSu'},
+		               {name:'安徽', value:'AnHui'}];
+		var cities = {JiangSu:[{name:'南京',value:'NanJing'},
+		                       {name:'苏州',value:'SuZhou'}],
+		              AnHui:[{name:'合肥', value:'HeFei'},
+		                     {name:'安庆', value:'AnQing'}]};
+
+
+		function init(){
+			var provSelect = document.getElementById('provinces');
+			for(var i in provinces){
+				var province = provinces[i];
+				var option = document.createElement('option');
+				option.setAttribute('value', province.value);
+				option.innerText = province.name; // 添加文本节点
+
+				provSelect.appendChild(option);
+			}
+
+			provSelect.addEventListener('change', function (e) {
+				var citiesSlect = document.getElementById('cities');
+				var cityArray = cities[e.target.value]; // cities['JiangSu']
+				// 删除原来的子元素 option
+				removeAllChild(citiesSlect);
+				// 添加新的子元素 option
+				for(var i in cityArray){
+					var city = cityArray[i];
+					var opt = document.createElement('option');
+					opt.setAttribute("value", city.value);
+					opt.innerText=city.name;
+
+					citiesSlect.appendChild(opt);
+				}
+			},false);
+
+
+			var e = document.createEvent("HtmlEvents");
+			e.initEvent("change", true,true);
+			provSelect.dispatchEvent(e);
+
+
+		}
+
+
+		function removeAllChild(parent) {
+			var childList = parent.childNodes; // 返回所有子节点，类似数组的对象。
+			for(var i=childList.length-1; i>=0; i--){
+				parent.removeChild(childList[i]);
+			}
+		}
+
+	</script>
+</head>
+<body onload="init();">
+	<select name="provinces" id="provinces"></select>
+	<select name="cities" id="cities"></select>
+
+	
+</body>
+</html>
