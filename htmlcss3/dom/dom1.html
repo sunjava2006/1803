@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		// document.write(); document.getElementById();
+		// DOM 操作：创建元素、删除元素、修改元素、放置元素、查找元素。
+		
+		// create element创建元素
+		var a = document.createElement('a'); // 创建所有HTML标记
+		var txt = document.createTextNode('百度');
+
+	    // 为元素添加属性
+	    a.setAttribute("href", "http://www.baidu.com");
+
+		// node element document
+		a.appendChild(txt); // 放置元素 ，为子节点。
+		document.body.appendChild(a);
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		function toReg () {
+			var regForm = document.getElementById('regForm');
+			regForm.submit(); // 提交表单的方法。
+		}
+		function over (target) {
+			target.className = 'over';
+		}
+		function out (tar) {
+			tar.className = '';
+		}
+
+		function selected (target) {
+			alert(target.value);
+		}
+	</script>
+	<style>
+		.over{
+			background: black;
+			color: white;
+		}
+		.btn1{
+			border: #ccc solid 1px;
+			border-radius: 5px;
+			box-shadow: #555 0px 0px 13px;
+		}
+		.btn1:hover{ /*伪类*/
+			background: orange;
+			color: white;
+			
+		}
+	</style>
+</head>
+<body>
+	<form action="#" method="get" id="regForm">
+		<select name="city" id="select1" onchange="selected(this);">
+			<option value="NanJing">南京</option>
+			<option value="BeiJing">北京</option>
+			<option value="DongJing">东京</option>
+		</select>
+		<button type="button" onclick ="toReg();" onmouseover="over(this);" onmouseout="out(this);">注册</button>
+
+	</form>
+<hr>
+<button class="btn1">btn</button>
+
+	
+</body>
+</html>

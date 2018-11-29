@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		var tb = document.createElement('table');
+		tb.setAttribute("border", 1);
+		tb.setAttribute("width", 200);
+		document.body.appendChild(tb);
+
+		for(var i=0;i<2;i++){
+			var tr = document.createElement('tr');
+			tb.appendChild(tr);
+			
+			for(var j=0;j<2;j++){
+				var td = document.createElement('td');
+				var txt = document.createTextNode(i+j);
+				td.appendChild(txt);
+				tr.appendChild(td);
+			}
+			
+		}
+
+	</script>
+</body>
+</html>

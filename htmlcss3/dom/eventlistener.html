@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		function proce(event) {
+				var input = event.target;
+				input.value = input.value.toUpperCase();
+			}
+		
+		function toChange (e) {
+			//为input 绑定keyup事件处理程序
+			var keyword = document.getElementById('keyword');
+			// 添加事件监听（“事件类型”， 处理函数， 捕获true|冒泡false）
+			keyword.addEventListener("keyup", proce, false);
+			console.log("-----target"+ e.target);
+			console.log("-----currentTarget"+e.currentTarget);
+		}
+
+        function init () {
+        	console.log('init');
+        	var toggleBtn = document.getElementById('toggleBtn');
+			toggleBtn.addEventListener('click', toChange, false);
+
+			var cancelBtn = document.getElementById('cancelBtn');
+			cancelBtn.addEventListener('click', function (e) {
+				var keyword = document.getElementById('keyword');
+				// 解除事件监听（“事件类型”， 处理函数， 捕获true|冒泡false）
+				keyword.removeEventListener("keyup", proce, false); // 解除事件监听。
+			}, false);
+
+
+
+
+			document.addEventListener('click', function (e) {
+				console.log("target"+ e.target);
+				console.log("currentTarget"+e.currentTarget);
+				e.stopPropagation(); // 停止事件传播
+			}, true);
+        }
+		
+	</script>
+</head>
+<body onload="init()">
+	<input type="text" id="keyword" >
+
+    <button type="button" id="toggleBtn" >只输入大写字母</button>
+    <button type="button" id="cancelBtn" >取消大写字母切换</button>
+
+</body>
+</html>
