@@ -7,7 +7,7 @@ public class Human {
 	
 	// 构造方法。（与类名同名，没有返回类型申明的方法）
 	Human(String name, String gender, Date birthday) {
-	    this.name = name;
+	    Human.this.name = name;
 		this.gender = gender;
 		this.birthday = birthday;
 	}

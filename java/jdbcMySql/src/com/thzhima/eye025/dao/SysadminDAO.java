@@ -9,10 +9,13 @@ import java.sql.Statement;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.thzhima.eye025.bean.Sysadmin;
+
 public class SysadminDAO {
 
-	public Map<String, Object> login(String adminName, String password) throws SQLException  {
-		Map<String, Object> map = null;
+	public Sysadmin login(String adminName, String password) throws SQLException  {
+		//Map<String, Object> map = null;
+		Sysadmin s = null;
 		Driver driver  = new org.mariadb.jdbc.Driver();
 		
 		Connection conn = null;
@@ -32,12 +35,14 @@ public class SysadminDAO {
 				String name = rst.getString("name");
 				int superAdmin = rst.getInt("super_admin");
 				
-				map = new HashMap<>();
-				map.put("id", id);
-				map.put("name", name);
-				map.put("admin_name", adminName);
-				map.put("password", password);
-				map.put("super_admin", superAdmin);
+				s = new Sysadmin(id, name, adminName, password, superAdmin);
+				
+//				map = new HashMap<>();
+//				map.put("id", id);
+//				map.put("name", name);
+//				map.put("admin_name", adminName);
+//				map.put("password", password);
+//				map.put("super_admin", superAdmin);
 			}
 			
 		} catch (SQLException e) {
@@ -54,7 +59,7 @@ public class SysadminDAO {
 			}
 		}
 
-		return map;
+		return s;
 	}
 	
 
@@ -70,7 +75,7 @@ public class SysadminDAO {
 	
 	public static void main(String[] args) throws SQLException {
 		SysadminDAO dao = new SysadminDAO();
-		Map m = dao.login("ying","123456");
+		Sysadmin m = dao.login("ying","123456");
 		System.out.println(m);
 		
 				
