@@ -14,6 +14,11 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns
   <servlet>
       <servlet-name>Admin_login</servlet-name>
       <servlet-class>com.thzhima.eye025.servlets.LoginServlet</servlet-class>
+      <init-param>
+          <param-name>charset</param-name>
+          <param-value>utf-8</param-value>
+      </init-param>
+      <load-on-startup>1</load-on-startup>
   </servlet>
   <servlet-mapping>
       <servlet-name>Admin_login</servlet-name>
