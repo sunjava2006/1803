@@ -26,7 +26,8 @@
 
 			provSelect.addEventListener('change', function (e) {
 				var citiesSlect = document.getElementById('cities');
-				var cityArray = cities[e.target.value]; // cities['JiangSu']
+				var pname = e.target.value;
+				var cityArray = cities[pname]; // cities['JiangSu']
 				// 删除原来的子元素 option
 				removeAllChild(citiesSlect);
 				// 添加新的子元素 option
@@ -41,8 +42,8 @@
 			},false);
 
 
-			var e = document.createEvent("HtmlEvents");
-			e.initEvent("change", true,true);
+			var e = document.createEvent("HtmlEvents");// 创建一个html元素的事件
+			e.initEvent("change", true, true);// 是什么事件？
 			provSelect.dispatchEvent(e);
 
 

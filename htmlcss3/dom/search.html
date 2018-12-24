@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+</head>
+<body>
+   <ul>
+   	<li name="li" class="a">a</li>
+   	<li name="lib" class="b">b</li>
+   	<li id="lic">c</li>
+   	<li name="lid">d</li>
+   	<li name="li">e</li>
+   </ul>
+
+	<script>
+		// 查找一个元素
+
+		// 该方法只返回一个，且只能按ID查找 
+		var lic = document.getElementById('lic');
+		console.log('lic id is: ' + lic.id);
+
+
+		// Html5 该方法只返回一个，无论按什么选择模式查找
+		var lic = document.querySelector('#lic'); // 按CSS的选择符查找一个
+		console.log('lic id is: ' + lic.id);
+
+		var firstLi = document.querySelector('li');
+		console.log('first li is : ' + firstLi.innerText);
+
+		var lib = document.querySelector('li[name=lib]');
+		console.log('lib is : ' + lib.innerText);
+
+		// 查找多个元素
+		var lis = document.getElementsByName('li');
+		for(var i=0; i<lis.length; i++){
+			var li = lis.item(i);
+			console.log(li.innerText);
+		}
+
+		var lis = document.getElementsByTagName('li');
+		for(var i=0; i<lis.length; i++){
+			var li = lis.item(i);
+			console.log(li.innerText);
+		}
+
+		var lis = document.getElementsByClassName('a');
+		for(var i=0; i<lis.length; i++){
+			var li = lis.item(i);
+			console.log("class : "+li.innerText);
+		}
+
+		// html5
+		var lis = document.querySelectorAll('.a');
+		console.log(lis);
+		for(var i=0; i<lis.length; i++){
+			var li = lis.item(i);
+			console.log("class: : "+li.innerText);
+		}
+
+		
+
+	</script>
+</body>
+</html>

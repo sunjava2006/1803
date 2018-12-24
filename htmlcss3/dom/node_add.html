@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<ul>
+		
+	</ul>
+
+
+	<script>
+		var ul = document.querySelector('ul');
+
+		// 添加一个子
+		var li = document.createElement('li');
+		li.appendChild(document.createTextNode('a'));
+		ul.appendChild(li);
+
+		// 插入一个子节点。
+		var newli = document.createElement('li');
+		newli.innerText='b'; 
+		ul.insertBefore(newli, ul.firstElementChild);
+
+		
+	</script>
+</body>
+</html>

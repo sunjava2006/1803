@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<ul>
+		<li>
+			<input type="checkbox">铅笔
+			<button name="btnUp">上移</button>
+			<button name="btnDown">下移</button>
+		</li>
+		<li>
+			<input type="checkbox">钢笔
+			<button name="btnUp">上移</button>
+			<button name="btnDown">下移</button>
+		</li>
+		<li>
+			<input type="checkbox">橡皮
+			<button name="btnUp">上移</button>
+			<button name="btnDown">下移</button>
+		</li>
+	</ul>
+
+	<div>
+		<button>全选/全不选</button>
+		<button id="btnReverse">反选</button>
+		<button id="btnDel">删除</button>
+		<button id="btnAdd">新增</button>
+	</div>
+
+	<script>
+		function up (e) {
+			var btn = e.target;
+			var li = btn.parentElement;
+			var previousLi = li.previousElementSibling;
+			if(previousLi){
+				var ul = li.parentElement;
+				ul.insertBefore(li, previousLi);
+			} 
+		}
+
+
+
+		var btnUps = document.getElementsByName('btnUp');
+		for(var i=0; i<btnUps.length; i++){
+			btnUps[i].addEventListener('click', up, false);
+		}
+
+
+		document.getElementById('btnReverse').addEventListener('click', function (e) {
+			var cks = document.querySelectorAll('input[type=checkbox]');
+			for(var i=0; i<cks.length; i++){
+				cks[i].checked=!cks[i].checked;
+			}
+
+		}, false);
+
+		document.getElementById('btnDel').addEventListener('click', function (e) {
+			var cks = document.querySelectorAll(':checked');
+			console.log(cks.length);
+			for(var i=0; i<cks.length; i++){
+				var ck = cks[i];
+				var li = ck.parentElement;
+			    
+			    var btnDown = li.lastElementChild;
+			    // btnDown.removeEventListener('click', down, false);
+			    var btnUp = btnDown.previousElementSibling;
+			    btnUp.removeEventListener('click', up, false);
+
+			    var ul = li.parentElement;
+			    ul.removeChild(li);
+			   
+			}
+		},false);
+
+		var btnAdd = document.querySelector('#btnAdd');
+		btnAdd.addEventListener('click', function (e) {
+			var fgmt = document.createDocumentFragment();
+			var li = document.createElement('li');
+			fgmt.appendChild(li);
+
+			var ck = document.createElement('input');
+			ck.setAttribute("type", "checkbox");
+			li.appendChild(ck);
+			li.appendChild(document.createTextNode('xxxx'));
+			
+			var upBtn = document.createElement('button');
+			upBtn.innerText="上移";
+			upBtn.addEventListener('click', up, false);
+			li.appendChild(upBtn);
+
+			var downBtn = document.createElement('button');
+			downBtn.innerText="下移";
+			li.appendChild(downBtn);
+
+			var ul = document.querySelector('ul');
+			ul.appendChild(fgmt);
+
+		}, false);
+
+	</script>
+</body>
+</html>

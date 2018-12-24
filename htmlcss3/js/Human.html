@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		
+		function Human (name, birthday, gender) {
+			this.name = name;
+			this.birthday = birthday;
+			this.gender = gender;
+			this.work = function(){
+				console.log(this.name + " is working now.");
+			}
+		}
+
+		var h = new Human("李白", "112年", "男");
+
+		h.work();
+
+
+		Human("张飞", "公元前10", "男");
+
+
+
+
+	</script>
+</body>
+</html>
