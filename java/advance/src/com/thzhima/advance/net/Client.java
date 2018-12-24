@@ -13,6 +13,7 @@ public class Client {
 		Socket client = new Socket("localhost", 8080);
 		
 		OutputStream out = client.getOutputStream(); // 输出流对象
+		
 		byte[] b = null;
 		String msg = "GET /?name=wang HTTP/1.1\n" + 
 				"Host: localhost:8088\n" + 
