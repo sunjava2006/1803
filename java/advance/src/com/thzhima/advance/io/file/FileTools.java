@@ -1,7 +1,9 @@
 package com.thzhima.advance.io.file;
 
+import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -10,6 +12,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 
 public class FileTools {
@@ -211,8 +214,22 @@ public class FileTools {
 //		copy("/home/wangrui/图片/1.png", "/home/wangrui/图片/png/2.png");
 		
 		
-		write("大家好，这里是java学习课堂。欢迎大家来学习Java Web 应用程序开发课程。", "/home/wangrui/tmp/aa.txt",  "gbk");
-		String s = readTxt("/home/wangrui/tmp/aa.txt", "gbk");
-		System.out.println(s);
+//		write("大家好，这里是java学习课堂。欢迎大家来学习Java Web 应用程序开发课程。", "/home/wangrui/tmp/aa.txt",  "gbk");
+//		String s = readTxt("/home/wangrui/tmp/aa.txt", "gbk");
+//		System.out.println(s);
+		
+		ByteArrayOutputStream out = new ByteArrayOutputStream(100);
+		
+		OutputStreamWriter ow = new OutputStreamWriter(out,"gbk");
+		
+		ow.write("中国人");
+		ow.close();
+		
+		byte[] buffer = out.toByteArray();
+		
+		for(byte b : buffer) {
+			System.out.println(b);
+		}
+		
 	}
 }
