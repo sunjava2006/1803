@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body style=" width: 100%">
+	<h1>简介</h1>
+
+	<form action="publishAbs" method="post" enctype="multipart/form-data">
+		<table>
+			<tr>
+				<td>照片1</td>
+				<td><input type="file" name="picture1"></td>
+			</tr>
+			<tr>
+				<td>照片2</td>
+				<td><input type="file" name="picture2"></td>
+			</tr>
+			<tr>
+				<td>照片3</td>
+				<td><input type="file" name="picture3"></td>
+			</tr>
+			<tr>
+				<td>简介</td>
+				<td><textarea rows="20" cols="100" name="content"></textarea></td>
+			</tr>
+			<tr>
+				<td>表布状态</td>
+				<td><input type="checkbox" name="publishStatus"></td>
+			</tr>
+			<tr>
+				<td><input type="reset" value="清空"></td>
+				<td><input type="submit" value="发布"></td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

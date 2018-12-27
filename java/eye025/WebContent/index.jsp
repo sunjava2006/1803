@@ -1,7 +1,5 @@
-<%@page import="com.sun.jndi.toolkit.url.UrlUtil, com.thzhima.eye025.bean.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" 
-    import="java.util.Enumeration"
-    pageEncoding="UTF-8" errorPage="err.jsp"%>
+    pageEncoding="UTF-8" %>
 
 <!DOCTYPE html>
 <html>
@@ -26,11 +24,12 @@
 		/*border: solid red 1px;*/
 	}
 	table{
-		width: 100%;
+		width: 900px;
 		font-size: 2em;
 		background: #EDDCDC;
 	}
 	td{
+	   width:300px;
 		height: 3em;
 	}
 	input{
@@ -50,8 +49,29 @@
 	}
 </style>
 <script>
-	function login (argument) {
-		return true;
+	function login (f) {
+		var adminNameMsg = document.getElementById("adminNameMsg");
+		var passwordMsg = document.getElementById('passwordMsg');
+		adminNameMsg.innerText = '';
+		passwordMsg.innerText = '';
+		
+		var ok = true;
+		// 校验登录名
+		var adminName = f.adminName.value;
+		var regexpName = /^[A-Za-z]{2,20}$/;
+		if(!regexpName.test(adminName)){
+			ok = false;
+			adminNameMsg.innerText = '登录名格式不正确';
+		}
+		
+		// 校验密码
+		var pwd = f.password.value;
+		var regexpPWD = /^[0-9a-zA-Z]{6,12}$/;
+		if(!regexpPWD.test(pwd)){
+			ok = false;
+			passwordMsg.innerText = '密码格式不正确';
+		}
+		return ok;
 	}
 </script>
 </head>
@@ -60,49 +80,29 @@
    	   <h1>
    	   	EyE眼科后台管理系统
    	   </h1>
-   	   <form action="login.jsp" method="post" onsubmit="return login();">
+   	   <form action="./login" method="post" onsubmit="return login(this);">
 	   	   <table>
 	   	   	<tr>
 	   	   		<td>登录名</td>
 	   	   		<td><input class="input"
-	   	   			type="text" name="adminName" id="adminName"></td>
+	   	   			type="text" name="adminName" id="adminName" placeholder="登录名为2-20字符"></td>
 	   	   		<td id="adminNameMsg"></td>
 	   	   	</tr>
 	   	   	<tr>
 	   	   		<td>密码</td>
-	   	   		<td><input class="input" type="password" name="password" id="password"></td>
+	   	   		<td><input class="input" type="password" name="password" id="password" placeholder="6-12位字母或数字"></td>
 	   	   		<td id="passwordMsg" ></td>
 	   	   	</tr>
 	   	   	<tr>
 	   	   		<td colspan="3">
-	<% String msg = request.getParameter("msg") ;
-	if (null != msg){
-		msg = new String(msg.getBytes("iso-8859-1"), "utf-8");
-		msg = UrlUtil.decode(msg, "utf-8");
-	    out.print(msg);
-	}
-	   
-	%>
-	<input type="submit" value="登录" class="btn" />
+	   	   		   ${msg }
+                  <input type="submit" value="登录" class="btn" />
 	   	   		</td> 
 	   	   		
 	   	   	</tr>
 	   	   </table>
    	   </form>
    </div>
-   
- <jsp:useBean id="user" class="com.thzhima.eye025.bean.Sysadmin" scope="request">
- </jsp:useBean>
- <jsp:setProperty property="name" value="XIE" name="user" />
- <%
- Sysadmin u = new Sysadmin();
- request.setAttribute("user", u);
- 
- u.setName("XIE");
- %>
- 
- 
-<%=((Sysadmin)request.getAttribute("user")).getName() %>
    
 </body>
 </html>
