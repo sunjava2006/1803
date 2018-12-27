@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Enumeration;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.Servlet;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -77,11 +78,15 @@ public class LoginServlet implements Servlet{
 			
 		}
 		else {
-			if(user != null) {
+			if(user != null) {// 登录成功
+				RequestDispatcher dispatcher = request.getRequestDispatcher("admin_manage.html"); // 获取一个请求转发对象。
+				dispatcher.forward(request, response); // 前进。（ 转发）
 				
-				response.getWriter().print(" login success. "+ user.getName()); // 响应。输出给浏览器的内容。
-			}else {
-				response.getWriter().print(" user name or password error. "); // 响应。输出给浏览器的内容。
+				//response.getWriter().print(" login success. "+ user.getName()); // 响应。输出给浏览器的内容。
+			}else { // 登录失败
+				//response.getWriter().print(" user name or password error. "); // 响应。输出给浏览器的内容。
+				request.setAttribute("msg", "用户名或密码不正确。");
+				request.getRequestDispatcher("index.jsp").forward(request, response);
 			}
 		}
 	}
