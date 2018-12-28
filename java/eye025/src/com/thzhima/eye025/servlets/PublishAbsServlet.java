@@ -71,14 +71,16 @@ public class PublishAbsServlet extends HttpServlet {
 					}else { // 是文件
 						String getFieldName = item.getFieldName();
 						String name = item.getName(); // 取上传的文件名
+						name = new String(name.getBytes("iso-8859-1"),"utf-8"); // 转码。
 						
-						// 取随机数为新文件名，与文件名后缀。产生一个新的文件名。
-						String prefix = String.valueOf((long)(Math.random()*1000000000000L));
-						String surfix = name.substring(name.lastIndexOf("."));
-						name = prefix + surfix;
-						
-						System.out.println(name);
 						if(!"".equals(name)) {
+							// 取随机数为新文件名，与文件名后缀。产生一个新的文件名。
+							String prefix = String.valueOf((long)(Math.random()*1000000000000L));
+							String surfix = name.substring(name.lastIndexOf("."));
+							name = prefix + surfix;
+							
+							System.out.println(name);
+							
 							item.write(new File(picDir+"/", name)); // 存文件。
 							if("picture1".equals(getFieldName)) {
 								p1 = "/pictures/"+name;
@@ -94,7 +96,14 @@ public class PublishAbsServlet extends HttpServlet {
 					}
 				}
 				
-				AbstractService.publish(content, publishStatus, p1, p2, p3);
+				boolean publishOk = AbstractService.publish(content, publishStatus, p1, p2, p3);
+				
+				if(publishOk) {// 简介发表成功，取出简介所有文章，转到简介文章列表页面
+					request.getRequestDispatcher("abstractList").forward(request, response);
+				}else {//返回简介发表页面，并提示发表错误。
+					request.setAttribute("msg", "医院简介发表出错，请重试或联系管理员。");
+					request.getRequestDispatcher("abstract.jsp").forward(request, response);
+				}
 				
 			} catch ( Exception e) {
 				e.printStackTrace();

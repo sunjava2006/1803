@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,16 +8,21 @@
 </head>
 <body style=" width: 100%">
 	<h1>简介</h1>
+	<%=request.getAttribute("msg")==null?"":request.getAttribute("msg")%>
 
 	<form action="publishAbs" method="post" enctype="multipart/form-data">
-		<table>
+		<table border="0">
 			<tr>
 				<td>照片1</td>
 				<td><input type="file" name="picture1"></td>
+				<td >
+					<button type="button" onclick="location='abstractList'">简介列表</button>
+				</td>
 			</tr>
 			<tr>
 				<td>照片2</td>
 				<td><input type="file" name="picture2"></td>
+				<td rowspan="5" ></td>
 			</tr>
 			<tr>
 				<td>照片3</td>

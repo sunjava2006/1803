@@ -1,7 +1,9 @@
 package com.thzhima.eye025.service;
 
 import java.sql.SQLException;
+import java.util.List;
 
+import com.thzhima.eye025.bean.Abstract;
 import com.thzhima.eye025.dao.AbstractDAO;
 
 public class AbstractService {
@@ -44,6 +46,12 @@ public class AbstractService {
 		}
 		return ok;
 	}
+	
+	public static List<Abstract> listAll() throws SQLException{
+		String sql = "select * from abstract";
+		return AbstractDAO.select(sql, null);
+	}
+	
 	
 	public static void main(String[] args) {
 		boolean ok = publish("简介4 。。。。。。", false, "p1.gif","p2.fig","p3");

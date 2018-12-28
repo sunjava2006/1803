@@ -34,7 +34,7 @@ public class AbstractDAO {
 					String picture3 = rst.getString("picture3");
 					Date publishDate = rst.getDate("publish_date");
 					
-					Abstract abs = new Abstract(id, picture1, picture2, picture3, publishStatus, publishDate);
+					Abstract abs = new Abstract(id, picture1, picture2, picture3, publishStatus, publishDate, content);
 					list.add(abs);
 					
 				}

@@ -8,6 +8,15 @@ public class Abstract {
 	private String picture1, picture2, picture3;
 	private boolean publishStatus;
 	private Date publishDate;
+	private String content;
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
 
 	public int getId() {
 		return id;
@@ -63,7 +72,7 @@ public class Abstract {
 	}
 
 	public Abstract(int id, String picture1, String picture2, String picture3, boolean publishStatus,
-			Date publishDate) {
+			Date publishDate, String content) {
 		super();
 		this.id = id;
 		this.picture1 = picture1;
@@ -71,6 +80,7 @@ public class Abstract {
 		this.picture3 = picture3;
 		this.publishStatus = publishStatus;
 		this.publishDate = publishDate;
+		this.content = content;
 	}
 
 	@Override
