@@ -74,6 +74,7 @@ public class JdbcTemplate {
 		PreparedStatement stm = null;
 		try {
 			conn = getConn();
+			conn.setAutoCommit(false); // 关闭自动提交事务
 			stm = conn.prepareStatement(sql);
 			if(args != null) {
 				for(int i=0; i<args.length; i++) {
@@ -81,13 +82,16 @@ public class JdbcTemplate {
 				}
 			}
 			count = stm.executeUpdate();
+			conn.commit(); // 提交事务
 		} catch (SQLException e) {
+			conn.rollback(); //  回滚事务。
 			throw e;
 		} finally {
 			if(null != stm) {
 				stm.close();
 			}
 			if(null != conn) {
+				conn.setAutoCommit(true); // 恢复默认值。
 				conn.close();
 			}
 		}

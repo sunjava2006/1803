@@ -56,10 +56,16 @@ public class PublishAbsServlet extends HttpServlet {
 						 System.out.println(name +":"+value);
 					}else { // 是文件
 						String fileName = item.getFieldName();
-						String name = item.getName();
+						String name = item.getName(); // 取上传的文件名
+						
+						// 取随机数为新文件名，与文件名后缀。产生一个新的文件名。
+						String prefix = String.valueOf((long)(Math.random()*1000000000000L));
+						String surfix = name.substring(name.lastIndexOf("."));
+						name = prefix + surfix;
+						
 						System.out.println(name);
 						if(!"".equals(name)) {
-							item.write(new File(picDir+"/", name));
+							item.write(new File(picDir+"/", name)); // 存文件。
 						}
 						
 					}
