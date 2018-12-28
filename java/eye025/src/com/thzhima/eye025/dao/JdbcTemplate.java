@@ -100,6 +100,39 @@ public class JdbcTemplate {
 	}
 	
 	
+	public static <T> T select(String sql, ResultSetExtractor<T> ext, Object...args) throws SQLException {
+		T t = null;
+		Connection conn = null;
+		PreparedStatement stm = null;
+		ResultSet rst = null;
+		try {
+			conn = getConn();
+			stm = conn.prepareStatement(sql);
+			if(args!=null) {
+				for(int i=0;i<args.length;i++) {
+					stm.setObject(i+1, args[i]);
+				}
+			}
+			
+			rst = stm.executeQuery(); // 查询，返回结果。
+			t = ext.extract(rst);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			if(rst!= null) {
+				rst.close();
+			}
+			if(null != stm) {
+				stm.close();
+			}
+			if(null != conn) {
+				conn.close();
+			}
+		}
+		return t;
+	}
+	
 	public static Map<String, Object> selectOne(String sql, Object...args) throws SQLException{
 		Map<String, Object> m = null;
 		Connection conn = null;

@@ -18,6 +18,8 @@ import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
+import com.thzhima.eye025.service.AbstractService;
+
 
 
 
@@ -48,14 +50,26 @@ public class PublishAbsServlet extends HttpServlet {
 			ServletFileUpload upload = new ServletFileUpload(factory);
 			try {
 				List<FileItem> items = upload.parseRequest(request);
+				String content = null;
+				boolean publishStatus = false;
+				String p1 = null ,p2 = null, p3 = null;
+				
 				for(int i=0; i<items.size(); i++) {
 					FileItem item = items.get(i);
 					if(item.isFormField()) { // 是普通form 中的输入元素
 						 String name = item.getFieldName();
 						 String value = item.getString();
+						 value = new String(value.getBytes("iso-8859-1"),"utf-8"); // 转码。
 						 System.out.println(name +":"+value);
+						 if("content".equals(name)) {
+			
+							 content = value;
+						 }
+						 else if("publishStatus".equals(name)) {
+							 publishStatus = "on".equals(value) ? true : false;
+						 }
 					}else { // 是文件
-						String fileName = item.getFieldName();
+						String getFieldName = item.getFieldName();
 						String name = item.getName(); // 取上传的文件名
 						
 						// 取随机数为新文件名，与文件名后缀。产生一个新的文件名。
@@ -66,10 +80,22 @@ public class PublishAbsServlet extends HttpServlet {
 						System.out.println(name);
 						if(!"".equals(name)) {
 							item.write(new File(picDir+"/", name)); // 存文件。
+							if("picture1".equals(getFieldName)) {
+								p1 = "/pictures/"+name;
+							}
+							else if("picture2".equals(getFieldName)) {
+								p2 = "/pictures/"+name;
+							}
+							else if("picture3".equals(getFieldName)) {
+								p3 = "/pictures/"+name;
+							}
 						}
 						
 					}
 				}
+				
+				AbstractService.publish(content, publishStatus, p1, p2, p3);
+				
 			} catch ( Exception e) {
 				e.printStackTrace();
 			}
