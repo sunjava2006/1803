@@ -4,13 +4,14 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Enumeration;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.Servlet;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.thzhima.eye025.bean.Sysadmin;
 import com.thzhima.eye025.service.UserService;
@@ -26,7 +27,8 @@ public class LoginServlet implements Servlet{
 	@Override
 	public void init(ServletConfig cfg) throws ServletException {
 		System.out.println("============init中=============");
-		String charset = cfg.getInitParameter("charset");
+		// 取出全局配置参数。
+		String charset = cfg.getServletContext().getInitParameter("charset");
 		this.contentType = "text/html;charset="+charset;
 		
 	}
@@ -79,8 +81,17 @@ public class LoginServlet implements Servlet{
 		}
 		else {
 			if(user != null) {// 登录成功
-				RequestDispatcher dispatcher = request.getRequestDispatcher("admin_manage.html"); // 获取一个请求转发对象。
-				dispatcher.forward(request, response); // 前进。（ 转发）
+				
+				// 获取用户的Session 对象。
+				HttpSession session = req.getSession(true);
+				// 把用户信息放到Session 中。
+				session.setAttribute("userInfo", user);
+				
+				
+				
+				HttpServletResponse res  = (HttpServletResponse) response;
+				res.sendRedirect("./admin_manage.jsp");//向浏览器发送一个重定向。定向到/admin_manage.html
+				//res.sendRedirect("http://www.sina.com.cn");
 				
 				//response.getWriter().print(" login success. "+ user.getName()); // 响应。输出给浏览器的内容。
 			}else { // 登录失败

@@ -4,7 +4,9 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.jws.soap.InitParam;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -14,7 +16,8 @@ import com.thzhima.eye025.bean.Abstract;
 import com.thzhima.eye025.service.AbstractService;
 
 
-@WebServlet("/abstractList")
+@WebServlet(value="/abstractList", initParams= {@WebInitParam(name="charset",value="utf-8")})
+
 public class AbstractListServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

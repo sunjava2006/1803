@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" 
+<%@ page language="java" contentType="text/html; charset=UTF-8" session="true"
     pageEncoding="UTF-8" %>
 
 <!DOCTYPE html>
@@ -76,6 +76,7 @@
 </script>
 </head>
 <body>
+   <%=this==page %>
    <div class="panel">
    	   <h1>
    	   	EyE眼科后台管理系统
