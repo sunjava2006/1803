@@ -12,7 +12,6 @@
   <servlet>
     <servlet-name>Admin_login</servlet-name>
     <servlet-class>com.thzhima.eye025.servlets.LoginServlet</servlet-class>
-   
     <load-on-startup>1</load-on-startup>
   </servlet>
   <servlet-mapping>
@@ -21,12 +20,14 @@
   </servlet-mapping>
   
   <session-config>
-    <session-timeout>30</session-timeout>
+    <session-timeout>1</session-timeout>
   </session-config>
   
- <context-param>
+  <context-param>
     <param-name>charset</param-name>
     <param-value>utf-8</param-value>
- </context-param>
-  
+  </context-param>
+  <listener>
+    <listener-class>com.thzhima.eye025.listener.OnlineListener</listener-class>
+  </listener>
 </web-app>

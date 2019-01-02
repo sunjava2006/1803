@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" import="com.thzhima.eye025.bean.*"
+<%@ page language="java" contentType="text/html; charset=UTF-8" 
+import="com.thzhima.eye025.bean.*, java.util.List"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -51,9 +52,23 @@
       if(null != user){
     	  out.print("你好:" + user.getName());
       
+         
      	       
 %>
      	       <button  type="button" onclick="location='./logout'">退出</button>
+     	<div style="float:right;">
+     	当前在线管理员：
+<%
+
+List<Sysadmin> list  = (List<Sysadmin>)application.getAttribute("adminList");	
+for(int i=0; i<list.size();i++){
+	  Sysadmin u = list.get(i);
+	  out.print(u.getName()+" &nbsp;");
+}
+
+%>     	
+     	
+     	</div>       
      	</div>
 		<div class="center">
 			<div class="sidebar">

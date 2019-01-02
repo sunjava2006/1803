@@ -3,9 +3,11 @@ package com.thzhima.eye025.servlets;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Enumeration;
+import java.util.List;
 
 import javax.servlet.Servlet;
 import javax.servlet.ServletConfig;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
@@ -81,6 +83,8 @@ public class LoginServlet implements Servlet{
 		}
 		else {
 			if(user != null) {// 登录成功
+				
+				
 				
 				// 获取用户的Session 对象。
 				HttpSession session = req.getSession(true);

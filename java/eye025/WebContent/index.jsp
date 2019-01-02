@@ -104,6 +104,6 @@
 	   	   </table>
    	   </form>
    </div>
-   
+   访问人数：  <%=application.getAttribute("count") %>
 </body>
 </html>
