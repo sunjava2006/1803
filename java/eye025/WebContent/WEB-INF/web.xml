@@ -18,11 +18,9 @@
     <servlet-name>Admin_login</servlet-name>
     <url-pattern>/login</url-pattern>
   </servlet-mapping>
-  
   <session-config>
     <session-timeout>1</session-timeout>
   </session-config>
-  
   <context-param>
     <param-name>charset</param-name>
     <param-value>utf-8</param-value>

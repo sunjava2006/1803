@@ -81,7 +81,7 @@
    	   <h1>
    	   	EyE眼科后台管理系统
    	   </h1>
-   	   <form action="./login" method="post" onsubmit="return login(this);">
+   	   <form action="./login" method="get" onsubmit="return login(this);">
 	   	   <table>
 	   	   	<tr>
 	   	   		<td>登录名</td>
@@ -95,7 +95,8 @@
 	   	   		<td id="passwordMsg" ></td>
 	   	   	</tr>
 	   	   	<tr>
-	   	   		<td colspan="3">
+	   	   	   <td colspan="2">10天免登录<input type="checkbox" name="autoLogin"/></td>
+	   	   		<td >
 	   	   		   ${msg }
                   <input type="submit" value="登录" class="btn" />
 	   	   		</td> 

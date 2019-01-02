@@ -3,14 +3,13 @@ package com.thzhima.eye025.servlets;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Enumeration;
-import java.util.List;
 
 import javax.servlet.Servlet;
 import javax.servlet.ServletConfig;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -84,6 +83,20 @@ public class LoginServlet implements Servlet{
 		else {
 			if(user != null) {// 登录成功
 				
+				// 自动登录处理
+				String auto = request.getParameter("autoLogin");
+				if("on".equals(auto)) {
+					Cookie c1 = new Cookie("adminName", adminName);
+					Cookie c2 = new Cookie("password", password);
+					c1.setMaxAge(60*60*24*10);
+					c2.setMaxAge(60*60*24*10);
+					
+					HttpServletResponse res = (HttpServletResponse) response;
+					res.addCookie(c1);
+					res.addCookie(c2);
+					
+					
+				}
 				
 				
 				// 获取用户的Session 对象。
