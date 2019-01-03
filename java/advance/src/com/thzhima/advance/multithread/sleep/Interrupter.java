@@ -46,8 +46,14 @@ public class Interrupter extends JFrame {
 //				try {
 					for (int i = 1; i <= Integer.MAX_VALUE; i++) {
 						bar.setValue(i);
-						if(Thread.interrupted()) {
+//						if(Thread.interrupted()) {
+//							System.out.println("-------设置了中断标识-------");
+//							System.out.println("再次用静态方法判断："+Thread.interrupted());
+//							break;
+//						}
+						if(this.isInterrupted()) {
 							System.out.println("-------设置了中断标识-------");
+							System.out.println("用实例方法判断："+this.isInterrupted());
 							break;
 						}
 						//Thread.sleep(300);
