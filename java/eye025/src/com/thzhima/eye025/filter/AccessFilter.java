@@ -21,7 +21,7 @@ import com.thzhima.eye025.bean.Sysadmin;
 import com.thzhima.eye025.service.UserService;
 
 
-@WebFilter("/*")
+//@WebFilter("/*")
 public class AccessFilter implements Filter {
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
