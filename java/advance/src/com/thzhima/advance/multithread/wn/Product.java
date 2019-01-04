@@ -58,7 +58,7 @@ public class Product {
 			}
 		};
 		
-		t.start();
-		t2.start();
+		
+		t2.start();t.start();
 	}
 }

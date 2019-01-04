@@ -6,9 +6,14 @@ import="java.util.List, com.thzhima.eye025.bean.*"
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<style>
+	img{
+		width: 100px;
+	}
+</style>
 </head>
 <body>
-    <table>
+    <table border="1">
 <%
     List<Abstract> list = (List<Abstract>)request.getAttribute("list");
     if(null != list){
@@ -17,8 +22,36 @@ import="java.util.List, com.thzhima.eye025.bean.*"
 %>    	
     	<tr>
     		<td><%=a.getContent() %></td>
+    		<td>
+<%
+            if(a.getPicture1()!=null){
+%>    		
+    		    <img src=".<%=a.getPicture1()%>">
+<%
+            }
+%>
+    		</td>
+    		<td>
+<%
+            if(a.getPicture2()!=null){
+%>    		
+    		    <img src=".<%=a.getPicture2()%>">
+<%
+            }
+%>          </td>
+    		<td>
+<%
+            if(a.getPicture3()!=null){
+%>    		
+    		    <img src=".<%=a.getPicture3()%>">
+<%
+            }
+%>			</td>
     		<td><%=a.isPublishStatus()?"是":"否"%></td>
-    		<td><button>发布</button></td>
+    		<td>
+    		    <button onclick="location.href='chStatus?absId=<%=a.getId()%>'">发布</button>
+    		    <button onclick="location.href='delAbs?absId=<%=a.getId() %>'">删除</button>
+    		</td>
     	</tr>
 <%
        }

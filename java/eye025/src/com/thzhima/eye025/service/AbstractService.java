@@ -47,9 +47,20 @@ public class AbstractService {
 		return ok;
 	}
 	
+	public static int setPublishStatus(int id) throws SQLException {
+		removeAllPublishStatus();
+		String sql = "update abstract set publish_status=1 where id=?";
+		return AbstractDAO.update(sql, id);
+	}
+	
 	public static List<Abstract> listAll() throws SQLException{
 		String sql = "select * from abstract";
 		return AbstractDAO.select(sql, null);
+	}
+	
+	public static int delByID(int id) throws SQLException {
+		String sql = "delete from abstract where id=?";
+		return AbstractDAO.update(sql, id);
 	}
 	
 	
