@@ -2,6 +2,7 @@ package com.thzhima.eye025.servlets;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 import javax.servlet.ServletConfig;
@@ -13,8 +14,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.FileUpload;
-import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
@@ -82,6 +81,8 @@ public class PublishAbsServlet extends HttpServlet {
 							System.out.println(name);
 							
 							item.write(new File(picDir+"/", name)); // 存文件。
+							InputStream in = item.getInputStream();
+							
 							if("picture1".equals(getFieldName)) {
 								p1 = "/pictures/"+name;
 							}

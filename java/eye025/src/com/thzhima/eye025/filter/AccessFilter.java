@@ -42,7 +42,7 @@ public class AccessFilter implements Filter {
 		if(o!=null) { // 已登录
 			chain.doFilter(request, response); // 放行
 		}else { // 没登录
-			if(-1 != path.indexOf("index.jsp") || -1!=(path.indexOf("login"))) {
+			if(-1 != path.indexOf("index.jsp") || -1!=(path.indexOf("login")) || -1!=(path.indexOf("showAbstract"))) {
 				chain.doFilter(request, response); // 放行
 			}
 			else {
